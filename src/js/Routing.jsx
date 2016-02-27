@@ -4,13 +4,13 @@ import ReactDOM from 'react-dom';
 
 /* Routes */
 import AppContainer from './components/AppContainer.jsx';
-import MessageList from './components/Messages/MessageList.jsx';
+import Room from './components/Room/Room.jsx';
 
 let Route = Router.Route;
 
 let routes = (
     <Route name="app" path="/" handler={AppContainer}>
-        <DefaultRoute handler={MessageList}/>
+        <DefaultRoute handler={Room}/>
         <NotFoundRoute handler={AppContainer}/>
     </Route>
 );
