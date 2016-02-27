@@ -1,0 +1,59 @@
+/* Selectable Lists */
+%list-style {
+	ul {
+		background: $color-white;
+		padding: 0 $default-padding;
+		li {
+			padding: $default-padding;
+			border-bottom: 1px solid $gray-medium;
+			&:last-child {
+				border-bottom: none;
+			}
+		}
+	}
+}
+
+%state-hover {
+	&:hover {
+		color: $gray-medium;
+	}
+}
+
+%state-active {
+	&.active{
+		background: $color-blue-highlight;
+		color:$color-white;
+	}
+}
+
+/// Text Color Variations based on state.
+.text {
+	&-success {
+		color: $color-success !important;
+	}
+	&-warning {
+		color: $color-warning !important;
+	}
+	&-error {
+		color: $color-error !important;
+	}
+}
+
+
+.fadeIn-appear {
+    opacity: 0.01;
+}
+
+.fadeIn-appear.fadeIn-appear-active {
+    opacity: 1;
+    transition: all 0.5s ease;
+}
+
+.fadeIn-leave {
+  opacity: 1;
+}
+
+.fadeIn-leave.fadeIn-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}

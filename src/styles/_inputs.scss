@@ -1,0 +1,357 @@
+/**********************************************************
+	
+	- inputs.scss (partial)
+
+	Collection of Input Styles used in the application
+
+	Any new input type to be implemented should inherit
+	default values from this file.
+
+	- Index - (Seach for 'n:' to navigate to section)
+	
+	1. - Input Base Styles
+	2. - Buttons
+	3. - Checkbox
+	4. - Radio
+	5. - Dropdown
+
+**********************************************************/
+
+
+/** 1: Input Base Styles
+=========================================================*/
+
+/// Base Styling for Inputs
+/// @require %input-validations
+/// @group inputs
+%input-base {
+	-webkit-appearance: none; // Fix iOS Styling
+	padding: $input-padding;
+	position: relative;
+	border-radius: $default-radius;
+	background: $color-white;
+	color: $text-dark;
+	box-sizing:border-box;
+	border: $default-border-width solid $gray-border;
+	&:focus {
+		border-color: $color-blue-highlight;
+		outline: $default-border-width solid $color-blue-highlight;
+	}
+	&:disabled {
+		background: $gray-medium;
+		color: $gray-dark;
+		border-color: $gray-dark;
+	}
+}
+
+/// Adds error, success and warning states to an input. 
+/// It has to be used as an @extend inside an input element's style.
+/// The basic button element already has this implemented.
+/// @example
+///		#input { @extend %input-validations; }
+/// @group inputs
+%input-validations {
+	&.error{
+		border-color: $color-error;
+		box-shadow: 0 0 0 $default-border-width $color-error;
+		&:focus{
+			box-shadow: 0 0 0 1px $color-error;
+			outline: none;
+			border-color: $color-error;
+			background: $color-white;
+			position: relative;
+		}
+	}
+	&.success {
+		border-color: $color-success;
+	}
+	&.warning {
+		border-color: $color-warning;
+	}
+}
+
+%text-input {
+	@extend %input-base;
+	@extend %input-validations;
+}
+
+%select {
+	@extend %input-base;
+	@extend %input-validations;
+	-webkit-appearance:none; // Override default style in Safari/iOS
+	background-image: url(../images/arrow-down.png);
+	background-repeat: no-repeat;
+	background-position: right;
+	background-size: 18px;
+	padding-right: $default-padding*2;
+
+	// Fix Firefox Appearance
+	// @see: https://gist.github.com/joaocunha/6273016/
+	// (Removes arrow and accounts for white space)
+	-moz-appearance: none;
+	text-indent: 0.01px;
+	text-overflow: ''; 
+}
+
+/** 2: Buttons
+=========================================================*/
+
+%button-states {
+	// opacity: 0.85;
+	&:hover { 
+		opacity: 1;
+		text-decoration: none !important;
+	}
+	&:active {
+		transform: scale(0.98, 0.98);
+	}
+	&:disabled {
+		opacity: 0.5;
+	}
+}
+
+/// Default Button Style
+/// Buttons in the application should only an icon on the right
+/// @group inputs
+%button {
+	color: $color-white;
+	padding: $input-padding;
+	background: $gray-border;
+	color: $text-medium;
+	font-family: $lato;
+	font-size: $button-text-size;
+	font-weight: 700;
+	border-radius: $default-radius;
+	border: 1px solid transparent;
+	outline: 0;
+	text-transform: uppercase;
+	text-decoration: none;
+	transition: $default-transition;
+	cursor: pointer;
+	.fa, .icon {
+		margin-left: $icon-spacing;
+		&.nomargin {
+			margin-left: 0;
+		}
+	}
+	@extend %button-states;
+}
+
+%button-success {
+	background: $color-success;
+	color: $color-white;
+}
+
+%button-warning {
+	background: $color-warning;
+	color: $color-white;
+}
+
+%button-info {
+	background: $color-blue-highlight;
+	color: $color-white;
+}
+
+%button-error {
+	background: $color-error;
+	color: $color-white;
+}
+
+%button-colors {
+	&.success {
+		@extend %button-success;
+	}
+	&.warning {
+		@extend %button-warning;
+	}
+	&.info {
+		@extend %button-info;
+	}
+	&.error {
+		@extend %button-error;
+	}
+}
+
+/** 1: Input Group
+=========================================================*/
+
+
+/// Used to Surround Checkboxes and Radio Inputs
+///	Creates a box that contains the input element's options
+/// @example
+///     <div className="input-group">
+///         <input type="checkbox" value="demo" name="example">
+///         ...
+///     </div>
+/// @group inputs
+%input-group {
+	background: $color-white;
+	border: $border-light;
+	border-radius: $default-radius;
+	display: inline-block;
+	label {
+		cursor: pointer;
+		padding: $default-padding/1.2 $default-padding;
+		border-bottom: $border-light;
+		padding-right: $default-padding*1.5;
+		display: block;
+		&:last-child {
+			border-bottom: none;
+		}
+	}
+}
+
+
+/** 3: Radio Button & Checkbox
+=========================================================*/
+
+%toggle-style {
+	display:inline-block;
+	margin-left: 0;
+	margin-right: $default-margin;
+	width:1em;
+	height:1em;
+	margin-top: -0.65em;
+	vertical-align: middle;
+	position:relative;
+	visibility:hidden;
+	&:hover:after{
+		background: $gray-lighter;
+	}
+	&:checked:hover:after{
+		background:$color-blue-highlight;
+	}
+	&:checked:after{
+		background:$color-blue-highlight;
+	}
+	&:checked:before{
+		border-color:$color-blue-highlight;
+	}
+}
+
+/// Radio Input
+%radio-input {
+	@extend %toggle-style;
+	&:before{
+		content:'';
+		display:block;
+		visibility:visible;
+		border:3px solid $gray-border;
+		background: $color-white;
+		width:100%;
+		height:100%;
+		border-radius:50%;
+		transition: $default-transition;
+	}
+	&:after{
+		content:'';
+		display:block;
+		visibility:visible;
+		position:absolute;
+		background: transparent;
+		height:100%;
+		left:0;
+		top:0;
+		width:100%;
+		margin: 3px;
+		border-radius:50%;
+		transform:scale(.72,.72);
+		transition: $default-transition;
+	}
+
+}
+
+%checkbox-input {
+	@extend %toggle-style;
+	&:before{
+		display:block;
+		visibility:visible;
+		content:'';
+		width:100%;
+		border-radius:$default-radius;
+		height:100%;
+		border:3px solid $gray-border;
+		background: $color-white;
+		transition:all 0.3s ease;
+
+	}
+	&:after{
+		display:block;
+		font-family: FontAwesome;
+		content:"\f00c";
+        top:0;
+		position:absolute;
+		margin: 3px;
+		visibility:visible;
+		top:0;
+		color: transparent;
+		transition:all 0.3s ease;
+	}
+	&:hover:after {
+		background: none;
+		color: $gray-lighter;
+	}
+	&:checked:hover:after {
+		background: none;
+		color: $color-blue-highlight;
+	}
+	&:checked:after {
+		background: none;
+		color: $color-blue-highlight;
+	}
+}
+
+
+/** 3: Apply Input Styles
+=========================================================*/
+
+button,
+.button,
+input[type="button"] {
+	@extend %button;
+	@extend %button-colors;
+	&.match-parent {
+		@extend %match-parent;
+	}
+}
+
+select {
+	@extend %select;
+}
+
+// Text Style Inputs
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+input[type="datetime"],
+input[type="password"] { 
+	@extend %text-input;
+}
+
+input[type="checkbox"] {
+	@extend %checkbox-input;
+}
+
+input[type="radio"] {
+	@extend %radio-input;
+}
+
+.input-group {
+	@extend %input-group;
+}
+
+.file-input{
+	input.file {
+		position: fixed;
+	    top: -10000px;	
+	}
+
+    span.button {
+    	cursor: pointer;
+    	display: inline-block;
+		text-align: center;
+		box-sizing: border-box;
+    }
+}

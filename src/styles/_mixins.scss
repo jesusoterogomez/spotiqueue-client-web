@@ -1,0 +1,46 @@
+@mixin transition($duration) {
+	transition: all $duration ease;
+}
+
+@mixin bottom-triangle($width, $height, $color) {
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -($width/2);
+	content:'';
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: $height ($width/2) 0 ($width/2);
+	border-color: $color transparent transparent transparent;
+	-webkit-transform:rotate(360deg);
+}
+
+/// Stacks elements horizontally,
+/// (converts elements to inline-block and applies default margin)
+@mixin stack-horizontal($columns) {
+	width: (100%)/$columns;
+	display: inline-block;
+	box-sizing: border-box;
+	padding: $default-padding;
+	padding-right: 0;
+	padding-left: $default-padding;
+	&:first-child {
+		padding-left: 0;
+	}
+}
+
+@mixin hyphenate() {
+	/* Needed for old IE support, but words are broken up letter-by-letter */
+	-ms-word-break: break-all;
+	word-break: break-all;
+
+	/* Non standard for webkit */
+	word-break: break-word;
+
+	/* Modern CSS3 Hyphenation with locale support */
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
+}

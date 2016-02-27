@@ -1,0 +1,36 @@
+/**********************************************************
+
+	- main.scss
+
+	Point of entry for the SASS compiler. This file must
+	reference all other files required in the application
+
+	Common Application-wide styles inherited from partials
+	should be applied to elements in this file.
+
+	Specific Component Styling should go into their
+	respective file within ./components directory
+
+	- Index - (Seach for 'n:' to navigate to section)
+
+	1. - Imports
+	2. - Default Styling
+
+**********************************************************/
+
+
+/** 1: Imports
+=========================================================*/
+
+@import "./fonts";
+@import "./mixins";
+@import "./variables";
+@import "./global";
+@import "./common/all";
+@import "./inputs";
+@import "./states";
+@import "./components";
+
+/** 2: Default Styling
+=========================================================*/
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+# Verifies that code is properly linted before allowing a successful commit.
+
+npm run lint
+EXIT_CODE=$?
+
+if [ "$EXIT_CODE" == 1 ]; then
+    echo "Linting errors need to be corrected before comitting"
+    exit 1
+else
+    echo "Linting Successful"
+fi

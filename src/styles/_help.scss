@@ -1,0 +1,10 @@
+.shepherd-active {
+    .shepherd-element-pending {
+        opacity: 0.2;
+        
+        &.shepherd-enabled {
+            opacity: 1;
+            box-shadow: inset 0 0 5px $color-blue-highlight;
+        }
+    }
+}

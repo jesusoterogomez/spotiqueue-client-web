@@ -1,0 +1,14 @@
+{
+  "name": "penneo-fe-webapp",
+  "version": "0.1.0",
+  "dependencies": {
+    "fontawesome": "~4.4.0",
+    "moment-timezone": "~0.4.1",
+    "pdfjs-dist": "~1.1.403",
+    "typeahead.js": "~0.11.1",
+    "components-font-awesome": "^4.5.0"
+  },
+  "overrides": {
+    "pdfjs-dist": "build/pdf.js"
+  }
+}

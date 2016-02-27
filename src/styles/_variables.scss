@@ -1,0 +1,299 @@
+/**********************************************************
+	
+	- variables.scss (partial)
+
+	Collection of SASS Variables to be used
+	Across the whole application. (global scoped)
+
+	Ideally, any change on the global values should be 
+	performed in this file instead of changing properties
+	on specific elements or selectors.
+
+	- Index - (Seach for 'n:' to navigate to section)
+	
+	1. - Font Settings
+	2. - Color Schemes
+	3. - Grayscale
+	4. - Text Colors
+ 	5. - Color Aliases
+	6. - Spacing & Sizing
+	7. - Breakpoints
+	8. - Animations
+
+**********************************************************/
+
+
+/** 1: Font Settings
+=========================================================*/
+
+/// Global Font Family
+$lato: 'Lato', sans-serif;
+
+// Form Filling Font Family
+$helvetica: Helvetica, Arial, sans-serif;
+
+/// Global Font Size 
+/// Other sizes are relative to this initial size
+/// (MUST be applied only to body, html and for 
+/// resetting size purposes)
+$default-size: 10.5pt;
+
+/// Font Size for Titles 
+/// @group fonts
+$title-size: 2em;
+
+/// Font Size for Subtitles
+/// @group fonts
+$subtitle-size:  1.5em;
+
+/// Font Size for Paragraphs
+/// @group fonts
+$paragraph-size: 0.9em;
+
+/// Medium Text Size
+/// @group fonts
+$medium-font-size: 0.8em;
+
+/// Small Text Size
+/// @group fonts
+$small-font-size: 0.7em;
+
+/// Default Font Size for Buttons
+/// @group fonts
+$button-text-size: 0.9em;
+
+/// Font size for Table Elements
+/// @group fonts
+$button-table-size: 0.8em;
+
+
+/** 2: Color Scheme
+=========================================================*/
+
+/// White Color
+/// @type color
+/// @group colors
+$color-white: #FFFFFF; // White
+
+/// Penneo Blue - Main
+/// @type color
+/// @group colors
+$color-blue-main: #203144; //Dark Blue
+
+/// Main Highlight Color
+/// @type color
+/// @group colors
+$color-highlight: #55CA92; //Turquoise 55BE92
+
+/// Blue Highlight
+/// @type color
+/// @group colors
+$color-blue-highlight: #0080BF; //Blue
+
+/// Error Color
+/// @type color
+/// @group colors
+$color-error: #E85742; //Soft Red
+
+/// Error Color
+/// @type color
+/// @group colors
+$color-info: #0080BF; //Soft Red
+
+/// Success Color
+/// @type color
+/// @group colors
+$color-success:	#55CA92; //Green
+
+/// Blue Highlight
+/// @type color
+/// @group colors
+$color-warning:	#FFA855; //Orange #F5E273 //Yellow
+
+/** 3: Grayscale
+=========================================================*/
+
+/// Gray Lighter
+/// @type color
+/// @group colors
+$gray-lighter: #F3F3F3;
+
+/// Gray Light
+/// @type color
+/// @group colors
+$gray-light: #F2F3F6;
+
+/// Gray Medium
+/// @type color
+/// @group colors
+$gray-medium: #EBECF2;
+
+/// Gray Dark
+/// @type color
+/// @group colors
+$gray-dark: #999999;
+
+/// Gray Darker
+/// @type color
+/// @group colors
+$gray-darker: #666666;
+
+/// Gray Darkest
+/// @type color
+/// @group colors
+$gray-darkest: #333333;
+
+/// Blue Highlight
+/// @type color
+/// @group colors
+$gray-border: #DDDDDD;
+
+
+/** 4: Text Colors
+=========================================================*/
+
+/// Light Text Color
+$text-light: #CCCCCC;
+
+/// Medium Text Color
+$text-medium: #888888;
+
+/// Dark Text Color
+$text-dark:  #333333;
+
+
+/** 5: Color Aliases
+=========================================================*/
+
+/// Application-wide Background Color
+/// @require $gray-medium
+/// @type color
+/// @group colors
+$background-color: $gray-medium;
+
+
+/** 6: Spacing & Sizing
+=========================================================*/
+
+/// Content Width in Default Mode (desktop).
+/// Every view has a .content element which
+/// uses this style to keep the application's
+/// content centered in the view.
+$content-width: 95%;
+
+/// Default Padding for Elements
+/// @group sizing
+$default-padding: 1em;
+
+/// Default Margin Between Elements
+/// @group sizing
+$default-margin: 1em;
+
+/// Default Border Radius for Elements
+/// @group sizing
+$default-radius: 3px;
+
+/// Horizontal Spacing for Icons in relation to their siblings
+/// @group sizing
+$icon-spacing: $default-margin/2;
+
+/// Default Padding for Input Elements
+/// @group inputs
+/// @require $default-padding
+$input-padding: $default-padding/1.4 $default-padding;
+
+/// Default Border Width for all Inputs
+/// @group inputs
+$default-border-width: 1px; // extra fine borders
+
+/// Small Sidebar Width
+/// @todo Convert into a mixin
+/// @group sizing
+$sidebar-width: 200px;
+
+/// Large Sidebar Width
+/// @todo Convert into a mixin
+/// @group sizing
+$large-sidebar-width: 300px;
+
+/// Default Header Height
+/// @group sizing
+$header-height: 60px;
+
+/// Default Minimum Width of Input Elements
+/// @group sizing
+$default-input-width: auto;
+
+/// Default Info Box With
+/// @group sizing
+$default-info-width: 500px;
+
+/** 7: Breakpoints
+=========================================================*/
+
+/// Small Breakpoint for Media Queries
+/// Mobile Size (~400px)
+/// @group breakpoints
+$break-small:  480px; 
+$breakpoint-small: "screen and (max-width: #{$break-small})";
+
+/// Medium Breakpoint for Media Queries
+/// Tablet Size (~600px)
+/// @group breakpoints
+$break-medium: 768px;
+$breakpoint-medium: "screen and (max-width: #{$break-medium})";
+
+/// Large Breakpoint for Media Queries
+/// Desktop Size (~1400px)
+/// @group breakpoints
+$break-large:  1200px;
+$breakpoint-large: "screen and (max-width: #{$break-large})";
+
+
+/** 8: Animations
+=========================================================*/
+
+/// Default Transition Duration
+/// @todo convert to a mixin that prepends vendor prefixes.
+$default-transition: all 0.3s ease;
+
+
+/// Default Light Border for Elements
+/// @require $gray-lighter
+/// @group colors
+$border-light: $default-border-width solid $gray-lighter;
+
+
+/// Base styling for widget containers.
+%_container {
+	box-sizing:border-box;
+	padding: $default-padding;
+	border: none;
+	border-radius: $default-radius;
+}
+
+/// Base container for transparent widgets. 
+%clear-container {
+	@extend %_container;
+	background: none;
+	color: $gray-darker;
+}
+
+/// Base container for white widgets. 
+%white-container {
+	@extend %_container;
+	background: $color-white;
+	color: $gray-darker;
+}
+
+%info-box {
+	@extend %white-container;
+	@extend .center-block;
+	width: $default-info-width;
+}
+
+%widget-container {
+	@extend %_container;
+	background: $gray-light;
+	border: 1px solid $gray-border;
+}
